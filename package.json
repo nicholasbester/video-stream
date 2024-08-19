@@ -1,0 +1,17 @@
+{
+  "name": "smp111-stream",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "ffmpeg": "ffmpeg -re -stream_loop -1 -i ./videoloop.mp4 -c:v libx264 -preset veryfast -maxrate 3000k -bufsize 6000k -vf \"scale=1280:720\" -g 50 -c:a aac -b:a 128k -f hls -hls_time 2 -hls_list_size 3 -hls_flags delete_segments -start_number 1 ./public/media/live/stream.m3u8",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "hls.js": "^1.5.14"
+  }
+}
